@@ -4,6 +4,10 @@
 # include <iostream>
 # include <string>
 
+// Messages:
+# define FIXED "\e[0;32mFixed\e[0m"
+
+// Class implementations:
 class Fixed {
 
     private:

@@ -1,6 +1,6 @@
-NAME		:= first_class
+NAME		:= first_orthodox_class
 
-SRCS		:= #main.cpp
+SRCS		:= main.cpp Fixed.cpp
 
 OBJ_DIR		:= obj
 
