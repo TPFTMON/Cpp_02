@@ -15,7 +15,7 @@ Fixed::Fixed(const Fixed &to_copy){
 }
 
 
-Fixed & Fixed::operator=(const Fixed &other){
+Fixed& Fixed::operator=(const Fixed &other){
     std::cout << COPY_ASSIGN_OP_MSG << FIXED << "\n";
 
     if (this != &other){
