@@ -12,7 +12,7 @@
 # define COPY_ASSIGN_OP_MSG "\e[0;35mCopy assignment operator\e[0m called of "
 # define DESTR_MSG "\e[0;31mDestructor\e[0m called of "
 # define GET_RAW_BITS_MSG "\e[0;35mgetRawBits member function\e[0m called of "
-# define SET_RAW_BITS_MSG "\e[0;35mgetRawBits member function\e[0m called of "
+# define SET_RAW_BITS_MSG "\e[0;35msetRawBits member function\e[0m called of "
 
 // Class implementations:
 class Fixed {
