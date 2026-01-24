@@ -1,7 +1,5 @@
 #include "Fixed.hpp"
 
-const int Fixed::_fraction = 8;
-
 Fixed::Fixed(){
     std::cout << DEF_CONSTR_MSG << FIXED << "\n";
 
@@ -44,4 +42,12 @@ void Fixed::setRawBits(int const raw) {
     std::cout << SET_RAW_BITS_MSG << FIXED << "\n";
 
     this->_value = raw;
+}
+
+float   Fixed::toFloat( void ) const{
+    std::cout << TO_FLOAT_MSG << FIXED << "\n";
+}
+
+int     Fixed::toInt( void ) const{
+    std::cout << TO_INT_MSG << FIXED << "\n";
 }

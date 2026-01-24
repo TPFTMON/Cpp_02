@@ -19,7 +19,7 @@ class Fixed {
 
     private:
         int _value;
-        static const int _fraction;
+        static const int _fraction;        // This is basically the rule by which we get the actual number
 
     public:
         Fixed();
