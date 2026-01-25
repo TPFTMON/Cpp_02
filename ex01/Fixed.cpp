@@ -1,5 +1,7 @@
 #include "Fixed.hpp"
 
+const int Fixed::_fraction = 8;
+
 Fixed::Fixed(){
     std::cout << DEF_CONSTR_MSG << FIXED << "\n";
 
@@ -13,15 +15,17 @@ Fixed::Fixed( const Fixed &to_copy ){
 }
 
 Fixed::Fixed( const float num ){
-    std::cout << FLOAT_CONSTR_MSG << "\n";
+    std::cout << FLOAT_CONSTR_MSG << FIXED <<"\n";
+
     // Multiply by 256 (1 << 8) and round to nearest integer
-    // this->_value = roundf(num * (1 << _fraction)); // (?)
+    this->_value = roundf(num * (1 << _fraction));
 }
 
 Fixed::Fixed( const int num ){
-    std::cout << INT_CONSTR_MSG << "\n";
+    std::cout << INT_CONSTR_MSG << FIXED <<"\n";
+
     // Shift bits left to make room for fraction
-    // this->_value = num << _fraction; (?)
+    this->_value = num << _fraction;
 }
 
 Fixed& Fixed::operator=( const Fixed &other ){
@@ -56,20 +60,23 @@ void Fixed::setRawBits( int const raw ){
 }
 
 float   Fixed::toFloat( void ) const{
-    std::cout << TO_FLOAT_MSG << FIXED << "\n";
+    // std::cout << TO_FLOAT_MSG << FIXED << "\n";
 
+    // Divide the raw integer by 256.0
     // Cast to float to avoid integer division
-    // return (float)this->_value / (float)(1 << _fraction); // (?)
+    return (float)this->_value / (float)(1 << _fraction);
 }
 
 int     Fixed::toInt( void ) const{
-    std::cout << TO_INT_MSG << FIXED << "\n";
+    // std::cout << TO_INT_MSG << FIXED << "\n";
 
     // Shift right to discard fraction
-    // return this->_value >> _fraction; // (?)
+    return this->_value >> _fraction;
 }
 
-std::ostream& operator<<( std::ostream& os, const Fixed& fixed){
+std::ostream& operator<<( std::ostream &os, const Fixed &fixed){
+    // std::cout << INSERT_OP_MSG << FIXED << "\n";
+
     os << fixed.toFloat();
     return (os);
 }

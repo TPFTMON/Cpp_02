@@ -19,6 +19,8 @@
 # define TO_INT_MSG "\e[0;35mtoInt member function\e[0m called of "
 # define TO_FLOAT_MSG "\e[0;35mtoFloat member function\e[0m called of "
 
+# define INSERT_OP_MSG "\e[0;35mInsertion operator\e[0m called of "
+
 // Class implementations:
 class Fixed {
 
@@ -42,6 +44,6 @@ class Fixed {
 };
 
 // Other Fixed functions:
-std::ostream& operator<<( std::ostream& os, const Fixed& fixed);
+std::ostream& operator<<( std::ostream &os, const Fixed &fixed);
 
 #endif

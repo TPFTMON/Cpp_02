@@ -1,6 +1,6 @@
 NAME		:= more_useful_class
 
-SRCS		:= #main.cpp
+SRCS		:= main.cpp Fixed.cpp
 
 OBJ_DIR		:= obj
 
