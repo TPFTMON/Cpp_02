@@ -36,12 +36,12 @@ class Fixed {
         Fixed& operator=( const Fixed &assign );
         ~Fixed();
 
-        int operator>(  );
-        int operator<(  );
-        int operator>=(  );
-        int operator<=(  );
-        int operator==(  );
-        int operator!=(  );
+        bool operator>( const Fixed& other ) const;
+        bool operator<( const Fixed& other ) const;
+        bool operator>=( const Fixed& other ) const;
+        bool operator<=( const Fixed& other ) const;
+        bool operator==( const Fixed& other ) const;
+        bool operator!=( const Fixed& other ) const;
         operator+(  );
         operator-(  );
         operator*(  );
