@@ -73,11 +73,3 @@ int     Fixed::toInt( void ) const{
     // Shift right to discard fraction
     return this->_value >> _fraction;
 }
-
-// Other functions:
-std::ostream& operator<<( std::ostream &os, const Fixed &fixed){
-    std::cout << INSERT_OP_MSG << FIXED << "\n";
-
-    os << fixed.toFloat();
-    return (os);
-}
