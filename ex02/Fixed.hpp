@@ -37,11 +37,13 @@ class Fixed {
         Fixed& operator=( const Fixed &assign );
         ~Fixed();
 
+
         // General member functions:
         int     getRawBits( void ) const;
         void    setRawBits( int const raw );
         float   toFloat( void ) const;
         int     toInt( void ) const;
+
 
         // Operators:
         bool operator>( const Fixed& other ) const;
@@ -61,10 +63,11 @@ class Fixed {
         Fixed& operator--();    // Pre-decrement
         Fixed  operator--(int); // Post-decrement
 
+
         // Math member functions:
-        static const Fixed& min(Fixed &a, Fixed &b);
+        static Fixed& min(Fixed &a, Fixed &b);
         static const Fixed& min(const Fixed &a, const Fixed &b);
-        static const Fixed& max(Fixed &a, Fixed &b);
+        static Fixed& max(Fixed &a, Fixed &b);
         static const Fixed& max(const Fixed &a, const Fixed &b);
 
 };

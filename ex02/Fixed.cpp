@@ -7,18 +7,21 @@
 const int Fixed::_fraction = 8;
 
 Fixed::Fixed(){
+
     std::cout << DEF_CONSTR_MSG << FIXED << "\n";
 
     this->_value = 0;
 }
 
 Fixed::Fixed( const Fixed &to_copy ){
+
     std::cout << COPY_CONSTR_MSG << FIXED << "\n";
 
     this->_value = to_copy._value;
 }
 
 Fixed::Fixed( const float num ){
+
     std::cout << FLOAT_CONSTR_MSG << FIXED <<"\n";
 
     // Multiply by 256 (1 << 8) and round to nearest integer
@@ -26,6 +29,7 @@ Fixed::Fixed( const float num ){
 }
 
 Fixed::Fixed( const int num ){
+
     std::cout << INT_CONSTR_MSG << FIXED <<"\n";
 
     // Shift bits left to make room for fraction
@@ -33,6 +37,7 @@ Fixed::Fixed( const int num ){
 }
 
 Fixed& Fixed::operator=( const Fixed &other ){
+
     std::cout << COPY_ASSIGN_OP_MSG << FIXED << "\n";
 
     if (this != &other){
@@ -42,6 +47,7 @@ Fixed& Fixed::operator=( const Fixed &other ){
 }
 
 Fixed::~Fixed(){
+
     std::cout << DESTR_MSG << FIXED << "\n";
 
 }
@@ -53,18 +59,21 @@ Fixed::~Fixed(){
 // ================================================================
 
 int Fixed::getRawBits( void ) const{
+
     std::cout << GET_RAW_BITS_MSG << FIXED << "\n";
 
     return (this->_value);
 }
 
 void Fixed::setRawBits( int const raw ){
+
     std::cout << SET_RAW_BITS_MSG << FIXED << "\n";
 
     this->_value = raw;
 }
 
 float   Fixed::toFloat( void ) const{
+
     // std::cout << TO_FLOAT_MSG << FIXED << "\n";
 
     // Divide the raw integer by 256.0
@@ -73,6 +82,7 @@ float   Fixed::toFloat( void ) const{
 }
 
 int     Fixed::toInt( void ) const{
+
     // std::cout << TO_INT_MSG << FIXED << "\n";
 
     // Shift right to discard fraction
@@ -86,54 +96,114 @@ int     Fixed::toInt( void ) const{
 // ================================================================
 
 bool Fixed::operator>(const Fixed& other) const {
+
     return (_value > other._value);
 }
 
-
 bool Fixed::operator<(const Fixed& other) const {
+
     return (_value < other._value);
 }
 
-
 bool Fixed::operator>=(const Fixed& other) const {
+
     return (_value >= other._value);
 }
 
-
 bool Fixed::operator<=(const Fixed& other) const {
+
     return (_value <= other._value);
 }
 
-
 bool Fixed::operator==(const Fixed& other) const {
+
     return (_value == other._value);
 }
 
-
 bool Fixed::operator!=(const Fixed& other) const {
+
     return (_value != other._value);
 }
 
+
+Fixed Fixed::operator+(const Fixed &other) const{
+
+
+}
+
+Fixed Fixed::operator-(const Fixed &other) const{
+
+
+}
+
+Fixed Fixed::operator*(const Fixed &other) const{
+
+
+}
+
+Fixed Fixed::operator/(const Fixed &other) const{
+
+
+}
+
+
+Fixed& Fixed::operator++(){
+
+    this->_value++;
+    return (*this);
+}
+
+Fixed  Fixed::operator++(int){
+
+    Fixed temp = *this;
+    this->_value++;
+    return (temp);
+}
+
+Fixed& Fixed::operator--(){
+
+    this->_value--;
+    return (*this);
+}
+
+Fixed  Fixed::operator--(int){
+
+    Fixed temp = *this;
+    this->_value--;
+    return (temp);
+}
 
 
 // ================================================================
 //                        OTHER MATH MEMBERS
 // ================================================================
 
-static const Fixed& Fixed::min(Fixed &a, Fixed &b){
+Fixed& Fixed::min(Fixed &a, Fixed &b){
 
+    if (a < b)
+        return (a);
+    return (b);
 }
 
-static const Fixed& Fixed::min(const Fixed &a, const Fixed &b){
+const Fixed& Fixed::min(const Fixed &a, const Fixed &b){
 
+    if (a < b)
+        return (a);
+    return (b);
 }
 
-static const Fixed& Fixed::max(Fixed &a, Fixed &b){
+Fixed& Fixed::max(Fixed &a, Fixed &b){
 
+    if (a > b)
+        return (a);
+    return (b);
 }
 
-static const Fixed& Fixed::max(const Fixed &a, const Fixed &b){
+const Fixed& Fixed::max(const Fixed &a, const Fixed &b){
 
+    if (a > b)
+        return (a);
+    return (b);
 }
 
 
@@ -143,6 +213,7 @@ static const Fixed& Fixed::max(const Fixed &a, const Fixed &b){
 // ================================================================
 
 std::ostream& operator<<( std::ostream &os, const Fixed &fixed){
+
     // std::cout << INSERT_OP_MSG << FIXED << "\n";
 
     os << fixed.toFloat();
