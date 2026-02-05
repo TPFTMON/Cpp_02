@@ -1,5 +1,9 @@
 #include "Fixed.hpp"
 
+// ================================================================
+//                         ORTHODOX BASE
+// ================================================================
+
 const int Fixed::_fraction = 8;
 
 Fixed::Fixed(){
@@ -37,7 +41,6 @@ Fixed& Fixed::operator=( const Fixed &other ){
     return *this;
 }
 
-
 Fixed::~Fixed(){
     std::cout << DESTR_MSG << FIXED << "\n";
 
@@ -45,13 +48,15 @@ Fixed::~Fixed(){
 
 
 
-// Other public methods:
+// ================================================================
+//                       MEMBER METHODS
+// ================================================================
+
 int Fixed::getRawBits( void ) const{
     std::cout << GET_RAW_BITS_MSG << FIXED << "\n";
 
     return (this->_value);
 }
-
 
 void Fixed::setRawBits( int const raw ){
     std::cout << SET_RAW_BITS_MSG << FIXED << "\n";
@@ -72,4 +77,74 @@ int     Fixed::toInt( void ) const{
 
     // Shift right to discard fraction
     return this->_value >> _fraction;
+}
+
+
+
+// ================================================================
+//                           OPERATORS
+// ================================================================
+
+bool Fixed::operator>(const Fixed& other) const {
+    return (_value > other._value);
+}
+
+
+bool Fixed::operator<(const Fixed& other) const {
+    return (_value < other._value);
+}
+
+
+bool Fixed::operator>=(const Fixed& other) const {
+    return (_value >= other._value);
+}
+
+
+bool Fixed::operator<=(const Fixed& other) const {
+    return (_value <= other._value);
+}
+
+
+bool Fixed::operator==(const Fixed& other) const {
+    return (_value == other._value);
+}
+
+
+bool Fixed::operator!=(const Fixed& other) const {
+    return (_value != other._value);
+}
+
+
+
+// ================================================================
+//                        OTHER MATH MEMBERS
+// ================================================================
+
+static const Fixed& Fixed::min(Fixed &a, Fixed &b){
+
+}
+
+static const Fixed& Fixed::min(const Fixed &a, const Fixed &b){
+
+}
+
+static const Fixed& Fixed::max(Fixed &a, Fixed &b){
+
+}
+
+static const Fixed& Fixed::max(const Fixed &a, const Fixed &b){
+
+}
+
+
+
+// ================================================================
+//                      OTHER FIXED FUNCTIONS
+// ================================================================
+
+std::ostream& operator<<( std::ostream &os, const Fixed &fixed){
+    // std::cout << INSERT_OP_MSG << FIXED << "\n";
+
+    os << fixed.toFloat();
+    return (os);
 }
