@@ -49,7 +49,6 @@ Fixed& Fixed::operator=( const Fixed &other ){
 Fixed::~Fixed(){
 
     std::cout << DESTR_MSG << FIXED << "\n";
-
 }
 
 
@@ -95,32 +94,32 @@ int     Fixed::toInt( void ) const{
 //                           OPERATORS
 // ================================================================
 
-bool Fixed::operator>(const Fixed& other) const {
+bool Fixed::operator>(const Fixed& other) const{
 
     return (_value > other._value);
 }
 
-bool Fixed::operator<(const Fixed& other) const {
+bool Fixed::operator<(const Fixed& other) const{
 
     return (_value < other._value);
 }
 
-bool Fixed::operator>=(const Fixed& other) const {
+bool Fixed::operator>=(const Fixed& other) const{
 
     return (_value >= other._value);
 }
 
-bool Fixed::operator<=(const Fixed& other) const {
+bool Fixed::operator<=(const Fixed& other) const{
 
     return (_value <= other._value);
 }
 
-bool Fixed::operator==(const Fixed& other) const {
+bool Fixed::operator==(const Fixed& other) const{
 
     return (_value == other._value);
 }
 
-bool Fixed::operator!=(const Fixed& other) const {
+bool Fixed::operator!=(const Fixed& other) const{
 
     return (_value != other._value);
 }
@@ -128,22 +127,35 @@ bool Fixed::operator!=(const Fixed& other) const {
 
 Fixed Fixed::operator+(const Fixed &other) const{
 
-
+    Fixed result;
+    result.setRawBits(this->_value + other.getRawBits());
+    return result;
 }
 
 Fixed Fixed::operator-(const Fixed &other) const{
 
-
+    Fixed result;
+    result.setRawBits(this->_value - other.getRawBits());
+    return result;
 }
 
 Fixed Fixed::operator*(const Fixed &other) const{
 
-
+    Fixed result;
+    // 1. Casting to long long to prevent overflow
+    // 2. Multiplying raw values
+    // 3. We shift Right by 8 (divide by 256) to fix the scale
+    result.setRawBits((long long)this->_value * other.getRawBits() >> _fraction);
+    return result;
 }
 
 Fixed Fixed::operator/(const Fixed &other) const{
 
-
+    Fixed result;
+    // 1. We shift Left by 8 (multiply by 256) FIRST to keep precision
+    // 2. Dividing by denominator
+    result.setRawBits(((long long)this->_value << _fraction) / other.getRawBits());
+    return result;
 }
 
 

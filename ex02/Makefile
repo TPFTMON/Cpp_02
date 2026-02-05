@@ -1,6 +1,6 @@
-NAME		:= NOW_WE'RE_TALKING
+NAME		:= NOW_WE_RE_TALKING
 
-SRCS		:= #main.cpp
+SRCS		:= main.cpp Fixed.cpp
 
 OBJ_DIR		:= obj
 
