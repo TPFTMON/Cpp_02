@@ -33,7 +33,7 @@ class Fixed {
         Fixed( const Fixed &copy );
         Fixed( const float num );
         Fixed( const int num );
-        Fixed& operator=( const Fixed &assign );
+        Fixed& operator=( const Fixed &other );
         ~Fixed();
 
         int     getRawBits( void ) const;
