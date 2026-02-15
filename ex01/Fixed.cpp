@@ -1,5 +1,9 @@
 #include "Fixed.hpp"
 
+// ================================================================
+//                         ORTHODOX BASE
+// ================================================================
+
 const int Fixed::_fraction = 8;
 
 Fixed::Fixed(){
@@ -45,16 +49,19 @@ Fixed::~Fixed(){
 
 
 
-// Other public methods:
+// ================================================================
+//                  OTHER PUBLIC MEMBER FUNCTIONS
+// ================================================================
+
 int Fixed::getRawBits( void ) const{
-    std::cout << GET_RAW_BITS_MSG << FIXED << "\n";
+    // std::cout << GET_RAW_BITS_MSG << FIXED << "\n";
 
     return (this->_value);
 }
 
 
 void Fixed::setRawBits( int const raw ){
-    std::cout << SET_RAW_BITS_MSG << FIXED << "\n";
+    // std::cout << SET_RAW_BITS_MSG << FIXED << "\n";
 
     this->_value = raw;
 }
@@ -74,9 +81,10 @@ int     Fixed::toInt( void ) const{
     return this->_value >> _fraction;
 }
 
+
 // Other functions:
 std::ostream& operator<<( std::ostream &os, const Fixed &fixed){
-    std::cout << INSERT_OP_MSG << FIXED << "\n";
+    // std::cout << INSERT_OP_MSG << FIXED << "\n";
 
     os << fixed.toFloat();
     return (os);

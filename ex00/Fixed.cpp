@@ -1,5 +1,9 @@
 #include "Fixed.hpp"
 
+// ================================================================
+//                         ORTHODOX BASE
+// ================================================================
+
 const int Fixed::_fraction = 8;
 
 Fixed::Fixed(){
@@ -32,7 +36,10 @@ Fixed::~Fixed(){
 
 
 
-// Other public methods:
+// ================================================================
+//                  OTHER PUBLIC MEMBER FUNCTIONS
+// ================================================================
+
 int Fixed::getRawBits(void) const {
     std::cout << GET_RAW_BITS_MSG << FIXED << "\n";
 

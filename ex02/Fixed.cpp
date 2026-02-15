@@ -59,14 +59,14 @@ Fixed::~Fixed(){
 
 int Fixed::getRawBits( void ) const{
 
-    std::cout << GET_RAW_BITS_MSG << FIXED << "\n";
+    // std::cout << GET_RAW_BITS_MSG << FIXED << "\n";
 
     return (this->_value);
 }
 
 void Fixed::setRawBits( int const raw ){
 
-    std::cout << SET_RAW_BITS_MSG << FIXED << "\n";
+    // std::cout << SET_RAW_BITS_MSG << FIXED << "\n";
 
     this->_value = raw;
 }
